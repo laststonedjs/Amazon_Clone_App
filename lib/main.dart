@@ -13,16 +13,35 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Amazon Clone',
-      theme:
-          ThemeData(scaffoldBackgroundColor: GlobalVariables.backgroundColor),
+      theme: ThemeData(
+        scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+        // ignore: prefer_const_constructors
+        colorScheme: ColorScheme.light(
+          primary: GlobalVariables.secondaryColor,
+        ),
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
+      ),
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Hello..'),
         ),
-        body: const Center(
-          child: Text(
-            'Amazon Home Page',
-          ),
+        body: Column(
+          children: [
+            const Center(
+              child: Text(
+                'Amazon Home Page',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text('Click Me!'),
+            ),
+          ],
         ),
       ),
     );
