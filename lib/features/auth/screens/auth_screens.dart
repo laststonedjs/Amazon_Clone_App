@@ -110,6 +110,9 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
               ListTile(
+                tileColor: _auth == Auth.signin
+                    ? GlobalVariables.backgroundColor
+                    : GlobalVariables.greyBackgroundCOlor,
                 title: const Text(
                   'Sign-In.',
                   style: TextStyle(
@@ -126,7 +129,40 @@ class _AuthScreenState extends State<AuthScreen> {
                     });
                   },
                 ),
-              )
+              ),
+              if (_auth == Auth.signin)
+                Container(
+                  /** 
+                   * We put the 'Form()' in the 'Container()' so that 
+                   * we can change the color in addition to the padding
+                  */
+                  padding: const EdgeInsets.all(8),
+                  color: GlobalVariables.backgroundColor,
+                  child: Form(
+                    key: _signInFormKey,
+                    child: Column(
+                      // created widget which will be reusable
+                      children: [
+                        CustomTextField(
+                          controller: _emailController,
+                          hintText: 'Your Email',
+                        ),
+                        const SizedBox(height: 10),
+                        CustomTextField(
+                          controller: _passwordController,
+                          hintText: 'Your Password',
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ), // passed SizedBox instead of Container for indendation, because SizedBox can be a constant
+                        CustomButton(
+                          text: 'Sign In',
+                          onTap: () {},
+                        )
+                      ],
+                    ),
+                  ),
+                ),
             ],
           ),
         ),
