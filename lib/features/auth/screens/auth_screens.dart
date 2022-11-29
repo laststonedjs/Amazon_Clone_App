@@ -154,7 +154,8 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         const SizedBox(
                           height: 10,
-                        ), // passed SizedBox instead of Container for indendation, because SizedBox can be a constant
+                        ), // passed SizedBox instead of Container for indendation between fields,
+                        // because SizedBox can be a constant
                         CustomButton(
                           text: 'Sign In',
                           onTap: () {},
