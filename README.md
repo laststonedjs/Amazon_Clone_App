@@ -1,6 +1,7 @@
 # amazon_clone_tech387
 
-A new Flutter project.
+A new Flutter project. The resembles a cloned UI version of Amazon. Node.js used for backend and MongoDB for db.
+
 
 ## Getting Started
 
