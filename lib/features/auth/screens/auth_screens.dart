@@ -1,10 +1,15 @@
 import 'package:amazon_clone_tech387/common/widgets/custom_button.dart';
 import 'package:amazon_clone_tech387/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone_tech387/constants/global_variables.dart';
+// ignore: depend_on_referenced_packages
+import 'package:amazon_clone_tech387/features/auth/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 // this enum will keep track of the radio buttons
-enum Auth { signin, signup }
+enum Auth {
+  signin,
+  signup,
+}
 
 class AuthScreen extends StatefulWidget {
   static const String routeName = '/auth-screen';
@@ -19,6 +24,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final _signUpFormKey = GlobalKey<FormState>();
   final _signInFormKey = GlobalKey<FormState>();
 
+  final AuthService authService = AuthService();
   // creating controller for email, password and name form fields
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -30,6 +36,15 @@ class _AuthScreenState extends State<AuthScreen> {
     _emailController.dispose();
     _passwordController.dispose();
     _nameController.dispose();
+  }
+
+  void signUpUser() {
+    authService.signUpUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+      name: _nameController.text,
+    );
   }
 
   @override
@@ -103,7 +118,11 @@ class _AuthScreenState extends State<AuthScreen> {
                         ), // passed SizedBox instead of Container for indendation, because SizedBox can be a constant
                         CustomButton(
                           text: 'Sign Up',
-                          onTap: () {},
+                          onTap: () {
+                            if (_signUpFormKey.currentState!.validate()) {
+                              signUpUser();
+                            }
+                          },
                         )
                       ],
                     ),
