@@ -21,12 +21,6 @@ const userSchema = mongoose.Schema({
   password: {
     required: true,
     type: String,
-    //   validate: {
-    //     validator: (value) => {
-    //       return value.lenght > 6;
-    //     },
-    //     message: 'Password must contain a minimum 6 characters',
-    //   },
   },
   address: {
     type: String,

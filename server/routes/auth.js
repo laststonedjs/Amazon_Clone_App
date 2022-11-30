@@ -26,8 +26,6 @@ authRouter.post('/api/signup', async (req, res) => {
   } catch (e) {
     res.status(500).json({ error: e.message });
   }
-  // 2) post that data in database 3) return data to the user
-
 });
 
 module.exports = authRouter;
