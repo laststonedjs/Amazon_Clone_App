@@ -40,6 +40,8 @@ class AuthService {
               context, 'Account created! Login with the same credentials.');
         },
       );
-    } catch (e) {}
+    } catch (e) {
+      showSnackBar(context, e.toString());
+    }
   }
 }
