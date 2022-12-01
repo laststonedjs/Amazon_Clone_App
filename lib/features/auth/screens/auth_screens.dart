@@ -38,6 +38,7 @@ class _AuthScreenState extends State<AuthScreen> {
     _nameController.dispose();
   }
 
+  // function for sign up user
   void signUpUser() {
     authService.signUpUser(
       context: context,
