@@ -48,6 +48,15 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
+  // function for sign in user
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -178,7 +187,11 @@ class _AuthScreenState extends State<AuthScreen> {
                         // because SizedBox can be a constant
                         CustomButton(
                           text: 'Sign In',
-                          onTap: () {},
+                          onTap: () {
+                            if (_signInFormKey.currentState!.validate()) {
+                              signInUser();
+                            }
+                          },
                         )
                       ],
                     ),
