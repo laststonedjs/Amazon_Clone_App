@@ -1,4 +1,4 @@
-import 'package:amazon_clone_tech387/features/auth/screens/auth_screens.dart';
+import 'package:amazon_clone_tech387/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone_tech387/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 

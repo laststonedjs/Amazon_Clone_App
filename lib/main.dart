@@ -1,6 +1,7 @@
 import 'package:amazon_clone_tech387/constants/global_variables.dart';
-import 'package:amazon_clone_tech387/features/auth/screens/auth_screens.dart';
+import 'package:amazon_clone_tech387/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone_tech387/features/auth/services/auth_service.dart';
+import 'package:amazon_clone_tech387/features/home/screens/home_screen.dart';
 import 'package:amazon_clone_tech387/providers/user_provider.dart';
 import 'package:amazon_clone_tech387/router.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    authService.getUserData(context);
   }
 
   // This widget is the root of your application.
@@ -48,7 +50,9 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: const AuthScreen(),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? const HomeScreen()
+          : const AuthScreen(),
     );
   }
 }
