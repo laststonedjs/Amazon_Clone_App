@@ -1,6 +1,7 @@
 // import from packages
 const express = require('express');
 const mongoose = require('mongoose');
+const adminRouter = require('./routes/admin');
 // import other files(services)
 const authRouter = require('./routes/auth');
 // init
@@ -11,6 +12,7 @@ const DB = 'mongodb+srv://lastoned:Albertobalsam101@cluster0.4mrgmvb.mongodb.net
 // middleware (client -> middleware -> server -> client)
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 
 // connections
 mongoose.connect(DB).then(() => { // we pass 'then()' here because this is a promise function
