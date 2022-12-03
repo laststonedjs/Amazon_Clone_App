@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:amazon_clone_tech387/common/widgets/custom_button.dart';
 import 'package:amazon_clone_tech387/common/widgets/custom_textfield.dart';
 import 'package:amazon_clone_tech387/constants/utils.dart';
+import 'package:amazon_clone_tech387/features/admin/services/admin_service.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController priceController = TextEditingController();
   final TextEditingController quantityController = TextEditingController();
 
+  final AdminServices adminServices = AdminServices();
   /**
    * The framework calls this method when this [State] object will never build again.
    * After the framework calls [dispose], the [State] object is considered unmounted 
@@ -39,6 +41,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
 
   String category = 'Mobiles';
   List<File> images = [];
+  final _addProductFromKey = GlobalKey<FormState>();
 
   @override
   void dispose() {
@@ -56,6 +59,20 @@ class _AddProductScreenState extends State<AddProductScreen> {
     'Books',
     'Fashion'
   ];
+
+  void sellProduct() {
+    if (_addProductFromKey.currentState!.validate() && images.isNotEmpty) {
+      adminServices.sellProduct(
+        context: context,
+        name: productNameController.text,
+        description: descriptionController.text,
+        price: double.parse(priceController.text),
+        quantity: double.parse(quantityController.text),
+        category: category,
+        images: images,
+      );
+    }
+  }
 
   void selectImages() async {
     var res = await pickImages();
@@ -83,6 +100,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFromKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
@@ -195,7 +213,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 ),
                 CustomButton(
                   text: 'Sell',
-                  onTap: () {},
+                  onTap: sellProduct,
                 ),
               ],
             ),
