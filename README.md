@@ -1,12 +1,12 @@
-# amazon_clone_tech387
+# Shopify_Flutter_App
 
-My first Flutter project, resembles a cloned UI version of Amazon. Node.js used for backend and MongoDB for db.
+###My first Flutter project, resembles a cloned UI version of Amazon. Node.js used for backend and MongoDB for db.
 
 Flutter is great!!!
 
-## Getting Started
+### Getting Started
 
-This project is a starting point for a Flutter application.
+# This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
